@@ -4,6 +4,8 @@ import HotelList from 'containers/HotelList';
 import Filter from './components/Filter';
 import request from 'supertest';
 import API_ENDPOINT from './config';
+import React from 'react'
+import HomeHeader from 'components/HomeHeader'
 
 export default class App extends React.PureComponent {
   constructor(props) {
@@ -41,13 +43,19 @@ export default class App extends React.PureComponent {
   render(){
     return (
       <div>
-        <div>Go Go Power Rangers ~~~</div>
       	<MuiThemeProvider>
+<<<<<<< HEAD
           <Filter priceRanges={this.priceRanges}
                   reviewScores={this.reviewScores}
                   landmarks={this.landmarks}
                   handleFilterChange={this.handleFilterClick} />
           <HotelList />
+=======
+          <div>
+            <HomeHeader />
+            <HotelList />
+          </div>
+>>>>>>> ba282296089f5c031e31c6bcdb08dc474bc4ed7c
 	    </MuiThemeProvider>
 	  </div>
     );

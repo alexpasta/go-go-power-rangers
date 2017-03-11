@@ -1,0 +1,35 @@
+.home-header {
+	background-image: url('../images/image-bg.png');
+	height: 1000px;
+}
+
+.home-tool-bar {
+	text-align: right;
+}
+
+.title-block {
+	text-align: center;
+	margin-top: 260px;
+
+	.title {
+		font-family: SFUIText;
+		font-size: 82px;
+		font-weight: bold;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: 1.12;
+		letter-spacing: -1px;
+		color: #17437f;
+	}
+
+	.sub-title {
+		font-family: SFUIText;
+		font-size: 24px;
+		font-weight: bold;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: 1.08;
+		letter-spacing: normal;
+		color: #00a3e6;
+	}
+}
