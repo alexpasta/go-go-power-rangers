@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import PriceFilter from 'components/PriceFilter'
-import ScoreFilter from 'components/ScoreFilter'
+import PriceFilter from 'components/filters/PriceFilter'
+import ScoreFilter from 'components/filters/ScoreFilter'
 import FacilityFilter from 'components/filters/FacilityFilter'
 
 export default class Filter extends Component {

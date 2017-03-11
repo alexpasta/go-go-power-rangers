@@ -28,6 +28,7 @@ export const FILTER_STYLES = {
     lineHeight: 'normal',
     letterSpacing: '0.5px',
     textAlign: 'left',
-    color: '#95909e'
+    color: '#95909e',
+    marginTop: '3px'
   }
 }
