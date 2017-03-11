@@ -12,7 +12,8 @@ export default class HotelPhoto extends React.PureComponent {
 
   render() {
     // return <Image src='http://aff.bstatic.com/images/hotel/max300_watermarked_standard/1c3/1c35406a6ed32a8d1eef9500d35b29526584d055.jpg'/>;
-  	return <Image src={this.state.hotelPhotoUrl} />
+  	if (!this.state.hotelPhotoUrl) return null
+    return <Image src={this.state.hotelPhotoUrl} />
   }
 
   componentDidMount() {

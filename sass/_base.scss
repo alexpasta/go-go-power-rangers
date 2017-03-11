@@ -131,17 +131,6 @@ input.error {
 	width: 16px;
 }
 
-.tm-logo {
-	@include bg-icon('../image/tm-logo.svg');
-	display: inline-block;
-	height: 24px;
-	width: 74px;
-}
-
-.icon-profile {
-	@include bg-icon('../image/icon_user.svg');
-}
-
 .clickable {
 	cursor: pointer;
 }

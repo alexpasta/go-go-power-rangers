@@ -29,14 +29,6 @@ export default class HotelList extends React.PureComponent {
 
     return (
       <div>
-		    <AutoComplete
-  	      floatingLabelText="Type a city name"
-  	      filter={AutoComplete.fuzzyFilter}
-  	      dataSource={CITIES}
-  	      maxSearchResults={5}
-          onNewRequest={this.getHotelAvailability}
-  	    />
-
         <BootstrapTable
             data={this.getHotelData()}
             selectRow={selectRow}
