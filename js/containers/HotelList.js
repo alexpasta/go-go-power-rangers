@@ -67,7 +67,7 @@ export default class HotelList extends React.PureComponent {
       key: key++,
       photo: h.hotel_id,
       name: h.hotel_name,
-      reviewScore: parseFLoat(h.review_score),
+      reviewScore: parseFloat(h.review_score),
       price: parseFloat(h.price)
     }))
   }
