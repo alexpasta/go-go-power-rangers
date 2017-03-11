@@ -1,0 +1,26 @@
+@mixin bg-icon($url, $pos: center, $size: contain) {
+	background: url($url) $pos / $size no-repeat;
+}
+
+@mixin bg-icon-left($url, $size) {
+	background: url($url) left center / $size no-repeat;
+}
+
+@mixin device-status($bg) {
+	background: $bg;
+	border-radius: 15px;
+	content: '';
+	display: inline-block;
+	height: 10px;
+	margin-right: 4px;
+	width: 10px;
+}
+
+@mixin page-title($ff: true) {
+	@if $ff { font-family: 'Interstate-Light', sans-serif; }
+	color: $default-text-color;
+	font-size: 18px;
+	font-weight: 200;
+	letter-spacing: -.45px;
+	-webkit-font-smoothing: antialiased;
+}

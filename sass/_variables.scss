@@ -1,0 +1,73 @@
+// === Base colors ==========
+$white: #fff;
+$lightest-grey: #eee;
+$lighter-grey: #d6d6d6;
+$light-grey: #979797;
+$grey: #777;
+$dark-grey: #666;
+$default-text-color: #222;
+
+$blue: #0095ce;
+$green: #028d43;
+$light-green: #4cc383;
+$hightlight-blue: #33abd6;
+$light-red: #ed1c24;
+$error-color: #f00;
+
+$trend-red: #db3d44;
+$trend-red--darken: #c22327;
+$trend-red-foreground: $white;
+
+// === Base ==========
+$body-background: #eee;
+$fore-background: $white;
+
+$border-color: $lighter-grey;
+$general-border: 1px solid $border-color;
+$bold-border: 2px solid $border-color;
+
+$table-border: 1px solid #aaa;
+$table-header-background: $lightest-grey;
+
+$global-margin-lr: 24px;
+
+
+// === Header ==========
+$header-background: $fore-background;
+$header-height: 159px;
+$header-height--default: 72px; // 67 + 5px border
+$tabs-height: 46px;
+
+$trend-nav-background: $trend-red;
+$trend-nav-foreground: $trend-red-foreground;
+$trend-nav-background--active: $trend-red--darken;
+
+
+// === Content ==========
+$content-padding-lr: 24px;
+
+// --- login
+$login-title-color: $default-text-color;
+$login-title-font-size: 30px;
+
+// --- dashboard
+$card-background: $fore-background;
+$card-border: $general-border;
+$card-margin-lr: 20px;
+$card-margin-b: 10px;
+
+$alert-background: #f5e3c3;
+$dash-title-font-size: 18px;
+$dash-title-line-height: 40px;
+
+$vul-color: $error-color;
+
+// == Footer ==========
+$footer-background: #f8f8f8;
+$footer-height: 41px; // only used by calc, 1px border
+
+// == Helper ==========
+$full-content-height: calc(100vh - #{$header-height});
+$full-content-height--no-tabs: calc(100vh - #{$header-height - $tabs-height});
+$full-content-height--default: calc(100vh - #{$header-height--default} - 5px);
+$full-content-height--login: calc(100vh - #{$header-height--default + $footer-height});

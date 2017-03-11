@@ -1,0 +1,187 @@
+body {
+	background: #fff;
+}
+
+.white-bg {
+	background: $white;
+}
+
+a {
+	text-decoration: none;
+
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
+}
+
+input {
+	&[type='file'] {
+		:focus {
+			outline: none;
+		}
+	}
+}
+
+.green {
+	color: $green;
+}
+
+select.form-control {
+	background-color: $white;
+}
+
+.form-group {
+	.error {
+		border-color: $error-color;
+	}
+
+	.error + span {
+		color: $error-color;
+		display: block;
+		margin-bottom: 12px;
+	}
+
+	.error.password + span {
+		top: 102px;
+	}
+}
+
+input.error {
+	border-color: $error-color;
+}
+
+.form-description {
+	margin-left: 132px;
+}
+
+.table {
+	border: $table-border;
+
+	thead tr th {
+		background: $table-header-background;
+		border-bottom: $general-border;
+		border-right: $general-border;
+		font-size: 13px;
+		font-weight: 400;
+		vertical-align: middle;
+
+		&:last-child {
+			border-right: 0;
+		}
+	}
+
+	tbody {
+		tr:not(:last-child) {
+			border-bottom: 1px solid #e6e6e6;
+		}
+	}
+}
+
+.full-table {
+	width: 100%;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.help-text {
+	color: $grey;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-1 {
+	flex: 1;
+}
+
+.flex-fill {
+	flex: 1 1 auto;
+}
+
+.op-hide {
+	opacity: 0;
+}
+
+.truncate {
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100px;
+}
+
+.auto-line-break {
+	white-space: pre-wrap;
+}
+
+.tip {
+	background: url('../image/ico_note.png') no-repeat;
+	height: 16px;
+	position: absolute;
+	width: 16px;
+}
+
+.tm-logo {
+	@include bg-icon('../image/tm-logo.svg');
+	display: inline-block;
+	height: 24px;
+	width: 74px;
+}
+
+.icon-profile {
+	@include bg-icon('../image/icon_user.svg');
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.disabled {
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+.dropdown li a.lock-li{
+	cursor: not-allowed;
+	opacity: 0.4;
+}
+
+table.table.ddes-table caption+thead>tr:first-child th.lock,
+table.table.ddes-table tr > td.lock,
+.lock {
+	color: rgba(black, .2)!important;
+    cursor: not-allowed;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.no-break {
+	white-space: nowrap;
+}
+
+.btn-lg {
+	-webkit-font-smoothing: antialiased;
+}
+
+a.under-line {
+	text-decoration: underline;
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+hr.divider {
+	border-top: 1px solid #dddddd;
+}
