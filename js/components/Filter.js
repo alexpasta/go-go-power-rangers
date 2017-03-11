@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
-import Nouislider from 'react-nouislider'
+import PriceFilter from 'components/PriceFilter'
+import ScoreFilter from 'components/ScoreFilter'
+import FacilityFilter from 'components/filters/FacilityFilter'
 
 export default class Filter extends Component {
   render() {
     return (
-      <div className='filter'>
-        <p className='sort-by'>Sory By</p>
-        <div className='filter-price'>
-          <div className='item-title price-title'>Price</div>
-          <div className='price-range-slider'>
-            <Nouislider
-              range={{min: 0, max: 200}}
-              start={[0, 100]}
-              tooltips
-              connect={true}
-            />
-          </div>
+      <div>
+        <p className='filter-by'>Filter By:</p>
+        <hr className="divider"/>
+        <div className='filter-container'>
+          <PriceFilter />
+        </div>
+        <hr className="divider"/>
+        <div className='filter-container'>
+          <ScoreFilter />
+        </div>
+        <hr className="divider"/>
+        <div className='filter-container'>
+          <FacilityFilter />
         </div>
       </div>
     )
