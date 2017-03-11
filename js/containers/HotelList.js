@@ -1,14 +1,17 @@
-import React from 'react';
-import AutoComplete from 'material-ui/AutoComplete';
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import hotelApi from 'apis/hotelApi';
-import { CITIES, DEFAULT_CITY }  from 'constants/Constants';
+import React from 'react'
+import { Image } from 'material-ui-image'
+import AutoComplete from 'material-ui/AutoComplete'
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
+import HotelPhoto from 'components/HotelPhoto'
+import hotelApi from 'apis/hotelApi'
+import { CITIES, DEFAULT_CITY }  from 'constants/constant'
 
 export default class HotelList extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       hotels: [],
+      hotelPhotoUrls: {},
       currentPage: 1
     };
   }
@@ -42,9 +45,10 @@ export default class HotelList extends React.PureComponent {
             pagination={true}
           >
             <TableHeaderColumn isKey={true} dataField="key" hidden={true}></TableHeaderColumn>
-            <TableHeaderColumn dataField="name" width="240">Name</TableHeaderColumn>
-            <TableHeaderColumn dataField="reviewScore" width="240">Review Score</TableHeaderColumn>
-            <TableHeaderColumn dataField="price" width="240">Price</TableHeaderColumn>
+            <TableHeaderColumn dataField="photo" dataFormat={this.photoDataFormat}>Photo</TableHeaderColumn>
+            <TableHeaderColumn dataField="name" width="200">Name</TableHeaderColumn>
+            <TableHeaderColumn dataField="reviewScore" width="130" dataSort>Review Score</TableHeaderColumn>
+            <TableHeaderColumn dataField="price" width="130" dataSort>Price</TableHeaderColumn>
           </BootstrapTable>
       </div>
     );
@@ -61,10 +65,15 @@ export default class HotelList extends React.PureComponent {
     let key = 0
     return this.state.hotels.map(h => ({
       key: key++,
+      photo: h.hotel_id,
       name: h.hotel_name,
-      reviewScore: h.review_score,
-      price: h.price
+      reviewScore: parseFLoat(h.review_score),
+      price: parseFloat(h.price)
     }))
+  }
+
+  photoDataFormat = hotelId => {
+    return <HotelPhoto hotelId={hotelId}/>
   }
 
   getHotelAvailability = () => {
