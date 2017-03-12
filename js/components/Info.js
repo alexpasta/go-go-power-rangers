@@ -16,7 +16,7 @@ export default class Info extends Component {
   render() {
     return (
       <div className="info">
-        <div className="dark-blue">{this.props.hotelName}</div>
+        <div className="dark-bluev hotel-name">{this.props.hotelName}</div>
         <div className="comment-modal">
           {this.state.isShowingModal &&
             <ModalContainer onClose={this.handleClose}>

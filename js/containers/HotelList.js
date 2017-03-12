@@ -39,6 +39,7 @@ export default class HotelList extends React.PureComponent {
             <TableHeaderColumn isKey={true} dataField="key" hidden={true}></TableHeaderColumn>
             <TableHeaderColumn dataField="photo" dataFormat={this.photoDataFormat}>Photo</TableHeaderColumn>
             <TableHeaderColumn dataField="info" width="200" dataFormat={this.infoDataFormat}>Info</TableHeaderColumn>
+            <TableHeaderColumn dataField="reviewCount" width="130" dataSort>Review Count</TableHeaderColumn>
             <TableHeaderColumn dataField="reviewScore" width="130" dataSort>Review Score</TableHeaderColumn>
             <TableHeaderColumn dataField="price" width="130" dataSort>Price</TableHeaderColumn>
           </BootstrapTable>
@@ -53,7 +54,8 @@ export default class HotelList extends React.PureComponent {
       key: key++,
       photo: h.hotel_id,
       info: { hotelId: h.hotel_id, hotelName: h.hotel_name },
-      reviewScore: parseFloat(h.review_score),
+      reviewCount: h.review_nr,
+      reviewScore: `${h.review_score} ${h.review_score_word}`,
       price: parseFloat(h.price)
     }))
   }

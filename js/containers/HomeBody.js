@@ -48,7 +48,7 @@ export default class HomeBody extends React.PureComponent {
 
     hotelApi.getHotelAvailability(params, res => {
       if (!res || !res.hotels) return
-
+      console.log('@@ res.hotels', res)
       this.setState({ hotels: res.hotels, hotelEntities: hotelEntities })
     });
   }

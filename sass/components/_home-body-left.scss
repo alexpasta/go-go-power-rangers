@@ -51,6 +51,34 @@
 	color: #95909e;
 }
 
+.label-user-icons {
+	float: right;
+	position: absolute !important;
+    right: 0;
+    top: -3px;
+
+	img {
+		width: 25px;
+		height: 25px;
+	}
+}
+
+.image-rounded-cropper {
+    position: relative;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+
+    img {
+	    display: inline;
+	    margin: 0 auto;
+	    width: auto;
+	}
+}
+
 .filter-price {
 	margin-top: 20px;
 }

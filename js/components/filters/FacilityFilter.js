@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import Checkbox from 'material-ui/Checkbox';
+import { Image } from 'material-ui-image'
+import Checkbox from 'material-ui/Checkbox'
 import { FILTER_STYLES } from 'constants/constant'
 
 export default class FacilityFilter extends Component {
   render() {
   	return (
   		<div className='filter-facility'>
-	      <div className='filter-title'>Facility</div>
+	      <div className='filter-title'>Facilities</div>
 	      <div>
 		      <Checkbox
-		        label="Free WiFi"
+		        label={this.getLaybelLayout("Free WiFi")}
 		        style={FILTER_STYLES.radioButton}
 		        labelStyle={FILTER_STYLES.labelStyle}
 		      />
@@ -37,4 +38,15 @@ export default class FacilityFilter extends Component {
 	    </div>
     )
   }
+
+  getLaybelLayout = (label, userIds) => (
+    <div>
+      <div className='inline-block'>{label}</div>
+      <div className='label-user-icons image-rounded-cropper'>
+        <img
+          src='https://taipeihacks.herokuapp.com/1.jpg'
+        />
+      </div>
+    </div>
+  )
 }

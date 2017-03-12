@@ -2,6 +2,11 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	text-align: center;
+
+	.hotel-name {
+		margin-bottom: 20px;
+	}
 }
 
 .comment-button {
