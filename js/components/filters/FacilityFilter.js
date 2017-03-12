@@ -19,6 +19,10 @@ const labels = [
 ]
 
 export default class FacilityFilter extends Component {
+  state = {
+    facilityHistory: []
+  }
+
   render() {
     return (
       <div className='filter-facility'>
@@ -27,52 +31,31 @@ export default class FacilityFilter extends Component {
           {labels.map((label, idx) => (
             <Checkbox
             key={idx}
+            checked={this.props.currentFacility.includes(idx)}
             label={this.getLaybelLayout(labels[idx], this.props.facilityHistory[idx])}
             style={FILTER_STYLES.radioButton}
-            labelStyle={FILTER_STYLES.labelStyle} />
+            labelStyle={FILTER_STYLES.labelStyle}
+            onCheck={(event, isChecked) => this.onCheck(idx, event, isChecked)} />
           ))}
         </div>
       </div>
     )
+  }
 
-  	// return (
-  	// 	<div className='filter-facility'>
-	  //     <div className='filter-title'>Facilities</div>
-	  //     <div>
-		 //      <Checkbox
-		 //        label={this.getLaybelLayout("Free WiFi", this.props.facilityHistory[0])}
-		 //        style={FILTER_STYLES.radioButton}
-		 //        labelStyle={FILTER_STYLES.labelStyle}
-		 //      />
-		 //      <Checkbox
-		 //        label={this.getLaybelLayout("Airport shuttle", this.props.facilityHistory[1])}
-		 //        style={FILTER_STYLES.radioButton}
-		 //        labelStyle={FILTER_STYLES.labelStyle}
-		 //      />
-		 //      <Checkbox
-		 //        label={this.getLaybelLayout("Restarant", this.props.facilityHistory[2])}
-		 //        style={FILTER_STYLES.radioButton}
-		 //        labelStyle={FILTER_STYLES.labelStyle}
-		 //      />
-		 //      <Checkbox
-		 //        label={this.getLaybelLayout("Fitness Centre", this.props.facilityHistory[3])}
-		 //        style={FILTER_STYLES.radioButton}
-		 //        labelStyle={FILTER_STYLES.labelStyle}
-		 //      />
-		 //      <Checkbox
-		 //        label={this.getLaybelLayout("Parking", this.props.facilityHistory[4])}
-		 //        style={FILTER_STYLES.radioButton}
-		 //        labelStyle={FILTER_STYLES.labelStyle}
-		 //      />
-		 //  </div>
-	  //   </div>
-    // )
+  componentDidMount() {
+    this.setState({ facilityHistory: this.props.facilityHistory })
+  }
+
+  onCheck = (idx, event, isChecked) => {
+    if (isChecked) {
+      facilityHistory[idx].userIds.push(1) // for demo
+    }
   }
 
   getLaybelLayout = (label, history) => {
     let userIds = []
     if (history) userIds = history.user_ids
-  	console.log('@@', label, history)
+  	// console.log('@@', label, history)
   	return (
 	    <div>
 	      <div className='inline-block'>{label}</div>

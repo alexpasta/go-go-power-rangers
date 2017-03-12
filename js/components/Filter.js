@@ -19,7 +19,7 @@ export default class Filter extends Component {
         <hr className="divider"/>
         <div className='filter-container'>
           <FacilityFilter 
-            currentFacilty={this.props.sharedFilter.currentFilter.facility}
+            currentFacility={this.props.sharedFilter.currentFilter.facility}
             facilityHistory={this.props.sharedFilter.filterHistory.facility}/>
         </div>
       </div>
