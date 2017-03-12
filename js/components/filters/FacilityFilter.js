@@ -33,7 +33,7 @@ export default class FacilityFilter extends Component {
             <Checkbox
             key={idx}
             checked={this.props.checkedList.includes(idx) || this.props.currentFacility.includes(idx)}
-            label={this.getLaybelLayout(labels[idx], this.props.facilityHistory[idx])}
+            label={this.getLaybelLayout(idx, labels[idx], this.props.facilityHistory[idx])}
             style={FILTER_STYLES.radioButton}
             labelStyle={FILTER_STYLES.labelStyle}
             onCheck={(event, isChecked) => this.props.onCheck(idx, event, isChecked)} />
@@ -59,9 +59,15 @@ export default class FacilityFilter extends Component {
   //   })
   // }
 
-  getLaybelLayout = (label, history) => {
+
+  getLaybelLayout = (idx, label, history) => {
     let userIds = []
     if (history) userIds = history.user_ids
+    if (this.props.hasEmma[idx]) {
+      userIds.push(1)
+    } else {
+      // userIds.remove(1)
+    }
   	// console.log('@@', label, history)
   	return (
 	    <div>

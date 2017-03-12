@@ -5,7 +5,8 @@ import FacilityFilter from 'components/filters/FacilityFilter'
 
 export default class Filter extends Component {
   state = {
-    checkedList: []
+    checkedList: [],
+    hasEmma: [],
   }
 
   render() {
@@ -26,7 +27,8 @@ export default class Filter extends Component {
             currentFacility={this.props.sharedFilter.currentFilter.facility}
             facilityHistory={this.props.sharedFilter.filterHistory.facility}
             checkedList={this.state.checkedList}
-            onCheck={this.onCheck}/>
+            onCheck={this.onCheck}
+            hasEmma={this.state.hasEmma} />
         </div>
       </div>
     )
@@ -47,15 +49,18 @@ export default class Filter extends Component {
 
   onCheck = (idx, event, isChecked) => {
     let checkedList = this.state.checkedList
+    let hasEmma = this.state.hasEmma
     if (isChecked) {
       // facilityHistory[idx].userIds.push(1) // for demo
-      
+      hasEmma[idx] = true
       checkedList.push(idx)
     } else {
       checkedList.remove(idx)
+      hasEmma[idx] = false
     }
     this.setState({
-      checkedList
+      checkedList,
+      hasEmma
     })
   }
 }
