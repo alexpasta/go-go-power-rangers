@@ -19,9 +19,10 @@ const labels = [
 ]
 
 export default class FacilityFilter extends Component {
-  state = {
-    facilityHistory: []
-  }
+  // state = {
+  //   facilityHistory: [],
+  //   checkedList: []
+  // }
 
   render() {
     return (
@@ -31,26 +32,32 @@ export default class FacilityFilter extends Component {
           {labels.map((label, idx) => (
             <Checkbox
             key={idx}
-            checked={this.props.currentFacility.includes(idx)}
+            checked={this.props.checkedList.includes(idx) || this.props.currentFacility.includes(idx)}
             label={this.getLaybelLayout(labels[idx], this.props.facilityHistory[idx])}
             style={FILTER_STYLES.radioButton}
             labelStyle={FILTER_STYLES.labelStyle}
-            onCheck={(event, isChecked) => this.onCheck(idx, event, isChecked)} />
+            onCheck={(event, isChecked) => this.props.onCheck(idx, event, isChecked)} />
           ))}
         </div>
       </div>
     )
   }
 
-  componentDidMount() {
-    this.setState({ facilityHistory: this.props.facilityHistory })
-  }
+  // componentDidMount() {
+  //   this.setState({ facilityHistory: this.props.facilityHistory })
+  // }
 
-  onCheck = (idx, event, isChecked) => {
-    if (isChecked) {
-      facilityHistory[idx].userIds.push(1) // for demo
-    }
-  }
+  // onCheck = (idx, event, isChecked) => {
+  //   let checkedList = this.state.checkedList
+  //   if (isChecked) {
+  //     // facilityHistory[idx].userIds.push(1) // for demo
+      
+  //     checkedList.push(idx)
+  //   }
+  //   this.setState({
+  //     checkedList
+  //   })
+  // }
 
   getLaybelLayout = (label, history) => {
     let userIds = []
