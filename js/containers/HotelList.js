@@ -44,10 +44,6 @@ export default class HotelList extends React.PureComponent {
     );
   }
 
-  componentDidMount() {
-    // this.getHotelAvailability();
-  }
-
   getHotelData() {
     if (!this.props.hotels || this.props.hotels.length === 0) return []
     
@@ -64,21 +60,4 @@ export default class HotelList extends React.PureComponent {
   photoDataFormat = hotelId => {
     return <HotelPhoto hotelId={hotelId}/>
   }
-
-  // getHotelAvailability = () => {
-  //   const params = {
-  //     checkin: '2017-06-09',
-  //     checkout: '2017-06-10',
-  //     cityIds: -2637882,
-  //     room1: 'A,A',
-  //     output: 'room_details,hotel_details'
-  //   }
-
-  //   hotelApi.getHotelAvailability(params, res => {
-  //     console.log('@@@@@@@', res)
-  //     if (!res || !res.hotels) return
-
-  //     this.setState({ hotels: res.hotels })
-  //   });
-  // }
 }

@@ -1,7 +1,8 @@
 import {BOOKING_ENDPOINT} from 'constants/config'
+import { AUTH_TOKEN } from 'constants/config'
 
 const options = {
-  headers:{'Authorization': ''}
+  headers:{'Authorization': AUTH_TOKEN}
 }
 
 export default {

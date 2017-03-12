@@ -14,3 +14,6 @@ bundle.js
 # Sass
 *.css.map
 css/main.css
+
+# local config file
+js/constants/config.js

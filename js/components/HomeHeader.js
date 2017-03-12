@@ -10,9 +10,13 @@ export default class HomeHeader extends React.PureComponent {
           <span className='dark-blue'>Booking</span>
           <span className='light-blue'>.com</span>
         </div>
+        <div className='fake-tool-bar'>
+          <img src='images/fake-tool-bar.png' />
+        </div>
         <div className='title-block'>
-          <p className='title'>Travel Together</p>
-          <p className='sub-title'>Share your Lists ❤ With Friend & Family</p>
+          <p className='title'>Collective Real-time</p>
+          <p className='title'>Booking</p>
+          <p className='sub-title'>Plan your trips with friends & family</p>
         </div>
       </div>
      )

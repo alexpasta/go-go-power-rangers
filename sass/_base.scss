@@ -120,17 +120,6 @@ input.error {
 	width: 100px;
 }
 
-.auto-line-break {
-	white-space: pre-wrap;
-}
-
-.tip {
-	background: url('../image/ico_note.png') no-repeat;
-	height: 16px;
-	position: absolute;
-	width: 16px;
-}
-
 .clickable {
 	cursor: pointer;
 }
@@ -138,18 +127,6 @@ input.error {
 .disabled {
 	pointer-events: none;
 	opacity: 0.4;
-}
-
-.dropdown li a.lock-li{
-	cursor: not-allowed;
-	opacity: 0.4;
-}
-
-table.table.ddes-table caption+thead>tr:first-child th.lock,
-table.table.ddes-table tr > td.lock,
-.lock {
-	color: rgba(black, .2)!important;
-    cursor: not-allowed;
 }
 
 .bold {
