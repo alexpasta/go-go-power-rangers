@@ -1,4 +1,4 @@
-import {BOOKING_ENDPOINT} from 'constants/config'
+import { BOOKING_ENDPOINT } from 'constants/config'
 import { AUTH_TOKEN } from 'constants/config'
 
 const options = {

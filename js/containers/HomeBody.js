@@ -1,4 +1,5 @@
 import React from 'react'
+import request from 'superagent'
 import HotelList from 'containers/HotelList'
 import Filter from 'components/Filter'
 import { API_ENDPOINT } from 'constants/config'
@@ -7,6 +8,7 @@ import hotelApi from 'apis/hotelApi'
 export default class HomeBody extends React.PureComponent {
   state = {
     hotels: [],
+    hotelEntities: [],
     priceRange: undefined,
     score: undefined
   }
@@ -21,7 +23,7 @@ export default class HomeBody extends React.PureComponent {
             onScoreChange={this.onScoreChange} />
         </div>
         <div className='home-body-right flex-column flex-fill'>
-          <HotelList hotels={this.state.hotels}/>
+          <HotelList hotels={this.state.hotels} hotelEntities={this.state.hotelEntities}/>
         </div>
       </div>
      )
@@ -32,7 +34,6 @@ export default class HomeBody extends React.PureComponent {
   }
 
   getHotelAvailability = () => {
-    console.log('@@@@@@@', this.state.score)
     const params = {
       checkin: '2017-06-09',
       checkout: '2017-06-10',
@@ -41,11 +42,14 @@ export default class HomeBody extends React.PureComponent {
       output: 'room_details,hotel_details',
       minReviewScore: this.state.score
     }
+    let hotelEntities = []
+    request.get(API_ENDPOINT + '/comments/1112')
+      .then(res => hotelEntities = res.body.hotel_entities)
 
     hotelApi.getHotelAvailability(params, res => {
       if (!res || !res.hotels) return
 
-      this.setState({ hotels: res.hotels })
+      this.setState({ hotels: res.hotels, hotelEntities: hotelEntities })
     });
   }
 
