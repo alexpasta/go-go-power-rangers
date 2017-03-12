@@ -10,8 +10,6 @@ export default class HotelList extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      hotels: [],
-      hotelPhotoUrls: {},
       currentPage: 1
     };
   }
@@ -47,15 +45,14 @@ export default class HotelList extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.getHotelAvailability();
+    // this.getHotelAvailability();
   }
 
   getHotelData() {
-    if (!this.state.hotels || this.state.hotels.length === 0) return []
-    console.log('hotels: ', this.state.hotels)
+    if (!this.props.hotels || this.props.hotels.length === 0) return []
     
     let key = 0
-    return this.state.hotels.map(h => ({
+    return this.props.hotels.map(h => ({
       key: key++,
       photo: h.hotel_id,
       name: h.hotel_name,
@@ -68,20 +65,20 @@ export default class HotelList extends React.PureComponent {
     return <HotelPhoto hotelId={hotelId}/>
   }
 
-  getHotelAvailability = () => {
-    const params = {
-      checkin: '2017-06-09',
-      checkout: '2017-06-10',
-      cityIds: -2637882,
-      room1: 'A,A',
-      output: 'room_details,hotel_details'
-    }
+  // getHotelAvailability = () => {
+  //   const params = {
+  //     checkin: '2017-06-09',
+  //     checkout: '2017-06-10',
+  //     cityIds: -2637882,
+  //     room1: 'A,A',
+  //     output: 'room_details,hotel_details'
+  //   }
 
-    hotelApi.getHotelAvailability(params, res => {
-      console.log('@@@@@@@', res)
-      if (!res || !res.hotels) return
+  //   hotelApi.getHotelAvailability(params, res => {
+  //     console.log('@@@@@@@', res)
+  //     if (!res || !res.hotels) return
 
-      this.setState({ hotels: res.hotels })
-    });
-  }
+  //     this.setState({ hotels: res.hotels })
+  //   });
+  // }
 }

@@ -14,7 +14,7 @@ export default class Filter extends Component {
         </div>
         <hr className="divider"/>
         <div className='filter-container'>
-          <ScoreFilter />
+          <ScoreFilter valueSelected={this.props.score} onChange={this.props.onScoreChange}/>
         </div>
         <hr className="divider"/>
         <div className='filter-container'>
@@ -23,19 +23,4 @@ export default class Filter extends Component {
       </div>
     )
   }
-  // render() {
-  //   return (
-  //     <div className="Filter">
-  //       <div className="FilterPrice">
-  //         {this.props.priceRanges.map(range => <Range range={range} handleFilterClick={this.props.handleFilterClick} />)}
-  //       </div>
-  //       <div className="FilterScore">
-  //         {this.props.reviewScores.map(score => <Score score={score} handleFilterClick={this.props.handleFilterClick} />)}
-  //       </div>
-  //       <div className="FilterLandmark">
-  //         {this.props.landmarks.map(landmark => <Landmark landmark={landmark} handleFilterClick={this.props.handleFilterClick} />)}
-  //       </div>
-  //     </div>
-  //   )
-  // }
 }
