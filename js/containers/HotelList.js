@@ -5,6 +5,9 @@ import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
 import HotelPhoto from 'components/HotelPhoto'
 import hotelApi from 'apis/hotelApi'
 import { CITIES, DEFAULT_CITY }  from 'constants/constant'
+import Info from 'components/Info'
+import request from 'superagent'
+import { API_ENDPOINT } from 'constants/config'
 
 export default class HotelList extends React.PureComponent {
   constructor(props) {
@@ -12,7 +15,8 @@ export default class HotelList extends React.PureComponent {
     this.state = {
       hotels: [],
       hotelPhotoUrls: {},
-      currentPage: 1
+      currentPage: 1,
+      hotel_entities: []
     };
   }
 
@@ -38,7 +42,7 @@ export default class HotelList extends React.PureComponent {
           >
             <TableHeaderColumn isKey={true} dataField="key" hidden={true}></TableHeaderColumn>
             <TableHeaderColumn dataField="photo" dataFormat={this.photoDataFormat}>Photo</TableHeaderColumn>
-            <TableHeaderColumn dataField="name" width="200">Name</TableHeaderColumn>
+            <TableHeaderColumn dataField="info" width="200" dataFormat={this.infoDataFormat}>Info</TableHeaderColumn>
             <TableHeaderColumn dataField="reviewScore" width="130" dataSort>Review Score</TableHeaderColumn>
             <TableHeaderColumn dataField="price" width="130" dataSort>Price</TableHeaderColumn>
           </BootstrapTable>
@@ -53,12 +57,12 @@ export default class HotelList extends React.PureComponent {
   getHotelData() {
     if (!this.state.hotels || this.state.hotels.length === 0) return []
     console.log('hotels: ', this.state.hotels)
-    
+
     let key = 0
     return this.state.hotels.map(h => ({
       key: key++,
       photo: h.hotel_id,
-      name: h.hotel_name,
+      info: { hotelId: h.hotel_id, hotelName: h.hotel_name },
       reviewScore: parseFloat(h.review_score),
       price: parseFloat(h.price)
     }))
@@ -66,6 +70,19 @@ export default class HotelList extends React.PureComponent {
 
   photoDataFormat = hotelId => {
     return <HotelPhoto hotelId={hotelId}/>
+  }
+
+  infoDataFormat = info => {
+    info['comments'] = []
+    for (var i = 0; i < this.state.hotel_entities.length; i++) {
+      if (info.hotelId = this.state.hotel_entities[i].hotel_id) {
+        info.comments = this.state.hotel_entities[i].comments
+        break
+      }
+    }
+    return <Info hotelId={info.hotelId}
+                 hotelName={info.hotelName}
+                 comments={info.comments}/>
   }
 
   getHotelAvailability = () => {
@@ -76,12 +93,15 @@ export default class HotelList extends React.PureComponent {
       room1: 'A,A',
       output: 'room_details,hotel_details'
     }
+    let hotel_entities = []
+    request.get(API_ENDPOINT + '/comments/1112')
+      .then(res => hotel_entities = res.body.hotel_entities)
 
     hotelApi.getHotelAvailability(params, res => {
       console.log('@@@@@@@', res)
       if (!res || !res.hotels) return
 
-      this.setState({ hotels: res.hotels })
+      this.setState({ hotels: res.hotels, hotel_entities })
     });
   }
 }

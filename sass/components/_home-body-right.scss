@@ -1,0 +1,41 @@
+.info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.comment-button {
+	height: 18px;
+	width: 80px;
+	border-radius: 10px;
+	border: 1px solid #808080;
+	text-align: center;
+	line-height: 16px;
+	font-size: 10px;
+	color: #808080;
+	cursor: pointer;
+}
+
+.comment-modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.comment-user {
+	width: 250px;
+	height: 100px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	color: #808080;
+}
+
+.comment-user img {
+	margin: 10px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
