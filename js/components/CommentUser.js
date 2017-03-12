@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-import { API_ENDPOINT } from 'constants/config'
+import { POWER_RANGER_ENDPOINT } from 'constants/config'
 
 export default class CommentUser extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class CommentUser extends Component {
 
   getUserPhoto = userId => {
     let img_url = ''
-    request.get(API_ENDPOINT + '/user/' + userId)
+    request.get(POWER_RANGER_ENDPOINT + '/user/' + userId)
       .then(res => {
         img_url = 'https://taipeihacks.herokuapp.com' + res.body.img_url
         this.setState({img_url})

@@ -16,7 +16,7 @@ export default class App extends React.PureComponent {
 
   componentDidMount() {
     let nextState = this.state;
-    // request.get(API_ENDPOINT + `/filter/${managerId}`)
+    // request.get(POWER_RANGER_ENDPOINT + `/filter/${managerId}`)
     //   .then(res => {
     //     nextState.priceRanges = res.body.filter.priceRanges
     //     nextState.reviewScores = res.body.filter.reviewScores
@@ -29,7 +29,7 @@ export default class App extends React.PureComponent {
     // let nextState = this.state;
     // const target = event.target;
     // nextState[target] = target.value;
-    // request.post(API_ENDPOINT + '/filter/update')
+    // request.post(POWER_RANGER_ENDPOINT + '/filter/update')
     //   .send(filter)
     // this.setState(nextState);
   }

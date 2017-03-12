@@ -6,7 +6,6 @@ import HotelPhoto from 'components/HotelPhoto'
 import hotelApi from 'apis/hotelApi'
 import { CITIES, DEFAULT_CITY }  from 'constants/constant'
 import Info from 'components/Info'
-import { API_ENDPOINT } from 'constants/config'
 
 export default class HotelList extends React.PureComponent {
   constructor(props) {

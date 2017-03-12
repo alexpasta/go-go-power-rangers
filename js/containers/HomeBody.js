@@ -2,22 +2,32 @@ import React from 'react'
 import request from 'superagent'
 import HotelList from 'containers/HotelList'
 import Filter from 'components/Filter'
-import { API_ENDPOINT } from 'constants/config'
+import { POWER_RANGER_ENDPOINT } from 'constants/config'
 import hotelApi from 'apis/hotelApi'
+import powerRangersApi from 'apis/powerRangersApi'
 
 export default class HomeBody extends React.PureComponent {
   state = {
     hotels: [],
     hotelEntities: [],
-    priceRange: undefined,
-    score: undefined
+    sharedFilter: {
+      currentFilter: {
+        facility: []
+      },
+      filterHistory: {
+        facility: []
+      }
+    },
+    priceRange: undefined, // TODO: use sharedFilter instead
+    score: undefined, // TODO: use sharedFilter instead
   }
 
   render() {
   	return (
       <div className='home-body flex'>
         <div className='home-body-left'>
-          <Filter 
+          <Filter
+            sharedFilter={this.state.sharedFilter}
             priceRange={this.state.priceRange}
             score={this.state.score}
             onScoreChange={this.onScoreChange} />
@@ -31,6 +41,7 @@ export default class HomeBody extends React.PureComponent {
 
   componentDidMount() {
     this.getHotelAvailability()
+    this.getSharedFilter()
   }
 
   getHotelAvailability = () => {
@@ -43,14 +54,23 @@ export default class HomeBody extends React.PureComponent {
       minReviewScore: this.state.score
     }
     let hotelEntities = []
-    request.get(API_ENDPOINT + '/comments/1112')
+    request.get(POWER_RANGER_ENDPOINT + '/comments/1112')
       .then(res => hotelEntities = res.body.hotel_entities)
 
     hotelApi.getHotelAvailability(params, res => {
       if (!res || !res.hotels) return
-      console.log('@@ res.hotels', res)
+      // console.log('@@ res.hotels', res)
       this.setState({ hotels: res.hotels, hotelEntities: hotelEntities })
     });
+  }
+
+  getSharedFilter = () => {
+    const managerId = '1112' // TODO: remove hardcode
+    powerRangersApi.getSharedFilter(managerId, res => {
+      if (!res) return
+      // console.log('@@ res', res)
+      this.setState({ sharedFilter: res })
+    })
   }
 
   onScoreChange = (event, score) => {
