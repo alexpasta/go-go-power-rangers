@@ -19,11 +19,6 @@ const labels = [
 ]
 
 export default class FacilityFilter extends Component {
-  // state = {
-  //   facilityHistory: [],
-  //   checkedList: []
-  // }
-
   render() {
     return (
       <div className='filter-facility'>
@@ -32,43 +27,24 @@ export default class FacilityFilter extends Component {
           {labels.map((label, idx) => (
             <Checkbox
             key={idx}
-            checked={this.props.checkedList.includes(idx) || this.props.currentFacility.includes(idx)}
-            label={this.getLaybelLayout(idx, labels[idx], this.props.facilityHistory[idx])}
+            checked={this.props.currentFacility.includes(idx)}
+            label={this.getLaybelLayout(labels[idx], this.props.facilityHistory[idx])}
             style={FILTER_STYLES.radioButton}
             labelStyle={FILTER_STYLES.labelStyle}
-            onCheck={(event, isChecked) => this.props.onCheck(idx, event, isChecked)} />
+            onCheck={(event, isChecked) => this.onCheck(idx, event, isChecked)} />
           ))}
         </div>
       </div>
     )
   }
 
-  // componentDidMount() {
-  //   this.setState({ facilityHistory: this.props.facilityHistory })
-  // }
+  onCheck = (idx, event, isChecked) => {
+    // TODO
+  }
 
-  // onCheck = (idx, event, isChecked) => {
-  //   let checkedList = this.state.checkedList
-  //   if (isChecked) {
-  //     // facilityHistory[idx].userIds.push(1) // for demo
-      
-  //     checkedList.push(idx)
-  //   }
-  //   this.setState({
-  //     checkedList
-  //   })
-  // }
-
-
-  getLaybelLayout = (idx, label, history) => {
+  getLaybelLayout = (label, history) => {
     let userIds = []
     if (history) userIds = history.user_ids
-    if (this.props.hasEmma[idx]) {
-      userIds.push(1)
-    } else {
-      // userIds.remove(1)
-    }
-  	// console.log('@@', label, history)
   	return (
 	    <div>
 	      <div className='inline-block'>{label}</div>

@@ -59,16 +59,14 @@ export default class HomeBody extends React.PureComponent {
 
     hotelApi.getHotelAvailability(params, res => {
       if (!res || !res.hotels) return
-      // console.log('@@ res.hotels', res)
       this.setState({ hotels: res.hotels, hotelEntities: hotelEntities })
     });
   }
 
   getSharedFilter = () => {
-    const managerId = '1112' // TODO: remove hardcode
+    const managerId = '1112' // TODO: remove hardcode, get this from the shared link
     powerRangersApi.getSharedFilter(managerId, res => {
       if (!res) return
-      // console.log('@@ res', res)
       this.setState({ sharedFilter: res })
     })
   }
