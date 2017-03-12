@@ -5,11 +5,10 @@ import { API_ENDPOINT } from 'constants/config'
 import hotelApi from 'apis/hotelApi'
 
 export default class HomeBody extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-  	}
+  state = {
+    hotels: [],
+    priceRange: undefined,
+    score: undefined
   }
 
   render() {
@@ -17,17 +16,45 @@ export default class HomeBody extends React.PureComponent {
       <div className='home-body flex'>
         <div className='home-body-left'>
           <Filter 
-            priceRanges={this.state.priceRanges}
-            reviewScores={this.state.reviewScores} />
+            priceRange={this.state.priceRange}
+            score={this.state.score}
+            onScoreChange={this.onScoreChange} />
         </div>
         <div className='home-body-right flex-column flex-fill'>
-          <HotelList />
+          <HotelList hotels={this.state.hotels}/>
         </div>
       </div>
      )
   }
 
   componentDidMount() {
+    this.getHotelAvailability()
+  }
 
+  getHotelAvailability = () => {
+    console.log('@@@@@@@', this.state.score)
+    const params = {
+      checkin: '2017-06-09',
+      checkout: '2017-06-10',
+      cityIds: -2637882,
+      room1: 'A,A',
+      output: 'room_details,hotel_details',
+      minReviewScore: this.state.score
+    }
+
+    hotelApi.getHotelAvailability(params, res => {
+      if (!res || !res.hotels) return
+
+      this.setState({ hotels: res.hotels })
+    });
+  }
+
+  onScoreChange = (event, score) => {
+    this.setState({ score: score }, this.getHotelAvailability)
+  }
+
+  updateFilter = () => {
+    // TODO
+    console.log('TODO', this.state.priceRange, this.state.score)
   }
 }

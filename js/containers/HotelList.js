@@ -17,6 +17,7 @@ export default class HotelList extends React.PureComponent {
       hotelPhotoUrls: {},
       currentPage: 1,
       hotel_entities: []
+      currentPage: 1
     };
   }
 
@@ -51,15 +52,20 @@ export default class HotelList extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.getHotelAvailability();
+    // this.getHotelAvailability();
   }
 
   getHotelData() {
+<<<<<<< HEAD
     if (!this.state.hotels || this.state.hotels.length === 0) return []
     console.log('hotels: ', this.state.hotels)
 
+=======
+    if (!this.props.hotels || this.props.hotels.length === 0) return []
+
+>>>>>>> 8664e561c9bbc9470129cf985627c9f94d486d92
     let key = 0
-    return this.state.hotels.map(h => ({
+    return this.props.hotels.map(h => ({
       key: key++,
       photo: h.hotel_id,
       info: { hotelId: h.hotel_id, hotelName: h.hotel_name },
@@ -72,6 +78,7 @@ export default class HotelList extends React.PureComponent {
     return <HotelPhoto hotelId={hotelId}/>
   }
 
+<<<<<<< HEAD
   infoDataFormat = info => {
     info['comments'] = []
     for (var i = 0; i < this.state.hotel_entities.length; i++) {
@@ -96,12 +103,28 @@ export default class HotelList extends React.PureComponent {
     let hotel_entities = []
     request.get(API_ENDPOINT + '/comments/1112')
       .then(res => hotel_entities = res.body.hotel_entities)
+=======
+  // getHotelAvailability = () => {
+  //   const params = {
+  //     checkin: '2017-06-09',
+  //     checkout: '2017-06-10',
+  //     cityIds: -2637882,
+  //     room1: 'A,A',
+  //     output: 'room_details,hotel_details'
+  //   }
+>>>>>>> 8664e561c9bbc9470129cf985627c9f94d486d92
 
-    hotelApi.getHotelAvailability(params, res => {
-      console.log('@@@@@@@', res)
-      if (!res || !res.hotels) return
+  //   hotelApi.getHotelAvailability(params, res => {
+  //     console.log('@@@@@@@', res)
+  //     if (!res || !res.hotels) return
 
+<<<<<<< HEAD
       this.setState({ hotels: res.hotels, hotel_entities })
     });
   }
+=======
+  //     this.setState({ hotels: res.hotels })
+  //   });
+  // }
+>>>>>>> 8664e561c9bbc9470129cf985627c9f94d486d92
 }
